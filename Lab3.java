@@ -17,11 +17,82 @@ public class Lab3
   public static void lightCandles()
   {
     //insert instructions below
-  
-  
-  
+    letsGo();
+    letsGo();
+    letsGo();
+    letsGo();
+    letsGo();
+    letsGo();
+    letsGo();
+    letsGo();
+    letsGo();
+    letsGo();
+    letsGo();
   }
   
+ public static void letsGo()
+ {
+    if (!Robot.frontIsClear())
+    {
+    oneCandle();
+    }
+    else
+    {
+    Robot.move();
+    }  
+    }
+    
+  public static void oneCandle()
+  {
+     Robot.turnLeft();
+      Robot.move();
+      turnRight();
+      if (Robot.frontIsClear())
+      {
+        Robot.move();
+        Robot.makeDark();
+        Robot.move();
+        returnToPosition();
+         }
+      else 
+      {
+        Robot.turnLeft();
+        Robot.move();
+        turnRight();
+        if (Robot.frontIsClear())
+      {
+        Robot.move();
+        Robot.makeDark();
+        Robot.move();
+        returnToPosition();
+         }
+      else 
+      {
+        Robot.turnLeft();
+        turnRight();
+         }
+ } 
+}
+public static void returnToPosition()
+{
+  turnRight();
+  if (Robot.frontIsClear())
+  {
+    Robot.move();  
+}
+if (Robot.frontIsClear())
+  {
+    Robot.move();  
+}
+Robot.turnLeft();
+}
+
+public static void turnRight()
+   {
+     Robot.turnLeft();
+     Robot.turnLeft();
+     Robot.turnLeft();
+    }
   //Run this method to test completeRoom on map room1.txt
   public static void testCompleteRoom1()
   {
@@ -41,11 +112,65 @@ public class Lab3
   //Complete this method.  You will need to write additional helper methods.
   public static void completeRoom()
   {
-    //insert instructions below
-  
-  
+    //insert instructions below'
+    oneRow();
+    turnRight();
+    oneRow();
+    turnRight();
+    oneRow();
+    turnRight();
+    oneRow();
+    turnRight();
   
   }
+  
+  public static void oneRow()
+  {
+    oneBlock();
+    Robot.move();
+    oneBlock();
+    Robot.move();
+    oneBlock();
+    Robot.move();
+    oneBlock();
+    Robot.move();
+    oneBlock();
+    }
+  
+  
+  public static void oneBlock()
+  {
+   Robot.turnLeft();
+   if (Robot.frontIsClear())
+   {
+     Robot.move();
+     if (Robot.onDark())
+     {
+       turnAround();
+     Robot.move();
+     Robot.turnLeft();  
+    }
+    else
+    {
+     Robot.makeDark();
+     turnAround();
+     Robot.move();
+     Robot.turnLeft();
+    }
+     
+    
+    }
+   else
+   {
+     turnRight();  
+    }
+  }
+  
+  public static void turnAround()
+  {
+     Robot.turnLeft();
+     Robot.turnLeft();
+    }
   
   //Run this method to test swapAll on map swap1.txt
   public static void testSwapAll1()
@@ -67,11 +192,79 @@ public class Lab3
   public static void swapAll()
   {
     //insert instructions below
-  
-  
+    oneSwitch();
+    Robot.move();
+    oneSwitch();
+    Robot.move();
+    oneSwitch();
+    Robot.move();
+    oneSwitch();
+    Robot.move();
+    oneSwitch();
+    Robot.move();
+    oneSwitch();
+    Robot.move();
+    oneSwitch();
+    Robot.move();
+    oneSwitch();
+    Robot.move();
+    oneSwitch();
+    Robot.move();
+    oneSwitch();
   
   }
   
+  public static void oneSwitch()
+  {
+    Robot.turnLeft();
+    Robot.move();
+    if (Robot.onDark())
+    {  
+      turnAround();
+      Robot.move();
+      Robot.move();
+      if (Robot.onDark())
+      {
+        turnAround();
+        Robot.move();
+        turnRight();
+        }
+      else
+      {
+       Robot.makeDark();
+       turnAround();
+       Robot.move();
+       Robot.move();
+       Robot.makeLight();
+       turnAround();
+       Robot.move();
+       Robot.turnLeft();
+        }
+    }
+    else
+    {
+      turnAround();
+      Robot.move();
+      Robot.move();   
+      if (Robot.onDark())
+      {
+        Robot.makeLight();
+        turnAround();
+        Robot.move();
+        Robot.move();
+        Robot.makeDark();
+        turnAround();
+        Robot.move();
+        Robot.turnLeft();
+        }
+      else
+      {
+       turnAround();
+       Robot.move();
+       turnRight();
+        }
+    }
+    }
   //Don't run these. I will!
   public static void testLightCandles3()
   {
